@@ -128,6 +128,7 @@ Merupakan kurs pasangan mata uang euro terhadap dolar Amerika Serikat. Pasangan 
    | 3 | USO       | 2290 non-null  | float64 |
    | 4 | SLV       | 2290 non-null  | float64 |
    | 5 | EUR/USD   | 2290 non-null  | float64 |
+
    Berdasarkan output di atas, terdapat 5 kolom dengan tipe data float64, 1 kolom dengan tipe data objek.
 
 **Tabel 2 : Deskripsi Statistik Dataset**      
@@ -141,6 +142,7 @@ Merupakan kurs pasangan mata uang euro terhadap dolar Amerika Serikat. Pasangan 
 |  50%  | 1551.43 |  120.58 |   33.87 |   17.27 |    1.30 |
 |  75%  | 2073.01 |  132.84 |   37.83 |   22.88 |    1.37 |
 |  max  | 2872.87 |  184.59 |  117.48 |   47.26 |    1.60 | 
+
 Berdasarkan output diatas  memberikan informasi mengenai statistik dataset yaitu count(jumlah data), mean(nilai rata-rata), std(standard deviasi), min(nilai terendah), 25%(quartil 1), 50%(median), 75%(quartil 3) dan max(nilai tertinggi).
 
 Grafik 1: Menampilkan pola korelasi variabel dengan pairplot
