@@ -12,7 +12,7 @@
 
 ## Domain Proyek
 
-Emas telah lama dikenal sebagai salah satu instrumen investasi yang diminati secara global. Pergerakan nilainya dipengaruhi oleh sejumlah variabel seperti inflasi, kebijakan suku bunga, dinamika perekonomian dunia, serta tingkat permintaan terhadap komoditas logam mulia ini. Fluktuasi harga emas yang cukup dinamis membuat prediksi terhadap pergerakannya menjadi hal yang kompleks bagi para investor. [[1]](https://money.kompas.com/read/2025/03/22/081200526/faktor-faktor-ini-yang-pengaruhi-pergerakan-harga-emas?utm_source=Various&utm_m
+Emas telah lama dikenal sebagai salah satu instrumen investasi yang diminati secara global. Pergerakan nilainya dipengaruhi oleh sejumlah variabel seperti inflasi, kebijakan suku bunga, dinamika perekonomian dunia, serta tingkat permintaan terhadap komoditas logam mulia ini. Fluktuasi harga emas yang cukup dinamis membuat prediksi terhadap pergerakannya menjadi hal yang kompleks bagi para investor. [[1]](https://money.kompas.com/read/2025/03/22/081200526/faktor-faktor-ini-yang-pengaruhi-pergerakan-harga-emas?utm_source=Various&utm_medium=Referral&utm_campaign=Top_Desktop)
 
 ![fZ-2qwcv55LciXkKzUnU](https://github.com/user-attachments/assets/c7157372-9507-4901-94a7-aebbd70f2194)
 
