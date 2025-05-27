@@ -16,7 +16,6 @@ Emas telah lama dikenal sebagai salah satu instrumen investasi yang diminati sec
 
 ![fZ-2qwcv55LciXkKzUnU](https://github.com/user-attachments/assets/c7157372-9507-4901-94a7-aebbd70f2194)
 
-
 **Gambar 1. Ilustrasi Gold (Emas)**
 
 Dalam hal ini, pemanfaatan teknologi Machine Learning (ML) menjadi alternatif yang menjanjikan untuk melakukan prediksi harga emas di masa yang akan datang. Teknologi ini mampu mengidentifikasi pola dari data historis harga emas, sehingga dapat digunakan untuk menghasilkan estimasi pergerakan harga secara lebih akurat berdasarkan pembelajaran dari data terdahulu.
@@ -148,7 +147,6 @@ Berdasarkan output diatas memberikan informasi mengenai statistik dataset yaitu 
 Grafik 1: Menampilkan pola korelasi variabel dengan pairplot
 ![download](https://github.com/user-attachments/assets/3586e65c-966d-446d-90dd-0db47bfa2a6a)
 
-
 ## Data Preparation
 
 Langkah-langkah dalam Menyiapkan Data
@@ -170,6 +168,42 @@ Langkah-langkah dalam Menyiapkan Data
 
 6. Menyelaraskan skala data (normalisasi):
    Ketika fitur dalam dataset memiliki skala nilai yang sangat bervariasi, hal ini dapat memengaruhi performa beberapa algoritma. Normalisasi atau standarisasi digunakan untuk menyetarakan skala seluruh variabel agar algoritma seperti regresi linier atau k-means dapat bekerja lebih optimal. Teknik populer termasuk Min-Max Scaling, StandardScaler, dan Z-Score, serta pendekatan lanjutan seperti PCA bila diperlukan.
+
+Pada tahap ini dilakukan sejumlah teknik praprosesan data untuk memastikan data bersih, terstruktur, dan siap digunakan dalam proses pemodelan. Berikut adalah tahapan-tahapan yang diterapkan secara berurutan:
+
+1. Transformasi Kolom Date
+   Kolom Date yang semula bertipe objek (string) dikonversi menjadi tipe datetime menggunakan fungsi pd.to_datetime().
+
+Setelah dikonversi, dilakukan ekstraksi tiga komponen waktu dari kolom tersebut:
+
+- Day: hari dari tanggal
+
+- Month: bulan dari tanggal
+
+- Year: tahun dari tanggal
+
+Langkah ini bertujuan untuk menguraikan informasi waktu yang terkandung dalam satu kolom menjadi beberapa fitur numerik terpisah yang lebih mudah diproses dalam algoritma machine learning.
+
+2. Penghapusan Kolom Asal dan Seleksi Kolom Penting
+
+- Setelah tiga komponen waktu berhasil diekstrak, kolom Date dihapus karena sudah tidak diperlukan.
+
+- Dataset kemudian disusun ulang hanya dengan menyertakan kolom-kolom berikut:
+
+  - Day, Month, Year (hasil ekstraksi waktu)
+
+  - SPX, GLD, USO, SLV, EUR/USD (fitur numerik terkait harga pasar)
+
+3. Output Dataset
+   Hasil akhir dari proses ini adalah sebuah DataFrame dengan 8 kolom dan 2.290 baris. Beberapa baris awal dari dataset terlihat sebagai berikut:
+
+| Day | Month | Year | SPX         | GLD       | USO       | SLV     | EUR/USD  |
+| --- | ----- | ---- | ----------- | --------- | --------- | ------- | -------- |
+| 2   | 1     | 2008 | 1447.160034 | 84.860001 | 78.470001 | 15.1800 | 1.471692 |
+| 3   | 1     | 2008 | 1447.160034 | 85.570000 | 78.370003 | 15.2850 | 1.474491 |
+| 4   | 1     | 2008 | 1411.630005 | 85.129997 | 77.309998 | 15.1670 | 1.475492 |
+| 7   | 1     | 2008 | 1416.180054 | 84.769997 | 75.500000 | 15.0530 | 1.468299 |
+| 8   | 1     | 2008 | 1390.189941 | 86.779999 | 76.059998 | 15.5900 | 1.557099 |
 
 ## Modeling
 
