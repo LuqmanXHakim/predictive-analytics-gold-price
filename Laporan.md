@@ -12,56 +12,113 @@
 
 ## Domain Proyek
 
-Emas telah lama dikenal sebagai salah satu instrumen investasi yang diminati secara global. Pergerakan nilainya dipengaruhi oleh sejumlah variabel seperti inflasi, kebijakan suku bunga, dinamika perekonomian dunia, serta tingkat permintaan terhadap komoditas logam mulia ini. Fluktuasi harga emas yang cukup dinamis membuat prediksi terhadap pergerakannya menjadi hal yang kompleks bagi para investor.
+Emas telah lama dikenal sebagai salah satu instrumen investasi yang diminati secara global. Pergerakan nilainya dipengaruhi oleh sejumlah variabel seperti inflasi, kebijakan suku bunga, dinamika perekonomian dunia, serta tingkat permintaan terhadap komoditas logam mulia ini. Fluktuasi harga emas yang cukup dinamis membuat prediksi terhadap pergerakannya menjadi hal yang kompleks bagi para investor. [[1]](https://money.kompas.com/read/2025/03/22/081200526/faktor-faktor-ini-yang-pengaruhi-pergerakan-harga-emas?utm_source=Various&utm_medium=Referral&utm_campaign=Top_Desktop)
+
+![Image](https://github.com/user-attachments/assets/62c94c8e-8b8e-4f5f-9bc1-a2a7740fcd03)
+**Gambar 1. Ilustrasi Gold (Emas)**
 
 Dalam hal ini, pemanfaatan teknologi Machine Learning (ML) menjadi alternatif yang menjanjikan untuk melakukan prediksi harga emas di masa yang akan datang. Teknologi ini mampu mengidentifikasi pola dari data historis harga emas, sehingga dapat digunakan untuk menghasilkan estimasi pergerakan harga secara lebih akurat berdasarkan pembelajaran dari data terdahulu.
 
-![Image](https://github.com/user-attachments/assets/62c94c8e-8b8e-4f5f-9bc1-a2a7740fcd03)
+Adapun dataset yang digunakan dalam studi ini mencakup data harga emas dari tahun 2009 hingga 2018, dengan rata-rata harga per tahunnya sebagai berikut:
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-- Format Referensi dapat mengacu pada penulisan sitasi [IEEE](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf), [APA](https://www.mendeley.com/guides/apa-citation-guide/) atau secara umum seperti [di sini](https://penerbitdeepublish.com/menulis-buku-membuat-sitasi-dengan-mudah/)
-- Sumber yang bisa digunakan [Scholar](https://scholar.google.com/)
+|*Year*| *Gold*|
+|------|-------|    
+| 2008 | 86.11 |    
+| 2009 | 95.83 |    
+| 2010 | 119.97|    
+| 2011 | 152.59|    
+| 2012 | 162.15|    
+| 2013 | 136.85|    
+| 2014 | 121.72|    
+| 2015 | 111.17|    
+| 2016 | 118.78|    
+| 2017 | 119.55|    
+| 2018 | 126.02|  
+
 
 ## Business Understanding
 
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
-
 ### Problem Statements
 
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+1. Emas merupakan salah satu aset investasi paling populer secara global. Namun, prediksi terhadap fluktuasi harganya menjadi tantangan besar bagi para investor karena harga emas sangat sensitif terhadap berbagai variabel ekonomi.
+Beberapa faktor utama yang memengaruhi nilai emas antara lain:
+
+- Inflasi
+Kenaikan inflasi biasanya menyebabkan menurunnya daya beli uang. Dalam kondisi ini, investor cenderung mengalihkan asetnya ke emas sebagai bentuk perlindungan nilai, sehingga harga emas meningkat.
+
+- Keadaan Ekonomi Dunia
+Ketidakpastian dalam ekonomi global, krisis keuangan, atau instabilitas geopolitik sering kali mendorong investor untuk beralih ke emas sebagai aset aman, yang biasanya mendorong harga emas naik.
+
+- Tingkat Suku Bunga
+Kenaikan suku bunga membuat instrumen investasi lain seperti deposito dan obligasi menjadi lebih menarik. Hal ini dapat menurunkan minat terhadap emas, menyebabkan harga emas turun.
+
+- Permintaan dan Pasokan
+Fluktuasi dalam permintaan industri maupun cadangan emas oleh bank sentral berpengaruh langsung terhadap harga. Ketidakseimbangan antara permintaan dan penawaran akan menciptakan tekanan harga.
+
+- Kurs Dolar AS
+Karena emas dihargai dalam dolar AS, penguatan atau pelemahan dolar akan berdampak pada harga emas. Ketika dolar melemah, harga emas cenderung menguat.
+
+- Spekulasi Investor dan Psikologi Pasar
+Reaksi emosional pasar, seperti kepanikan atau euforia, serta aktivitas spekulatif bisa memicu pergerakan harga emas yang tidak selalu mencerminkan kondisi fundamental.
+
+- Situasi Geopolitik
+Konflik internasional dan ketegangan politik sering memicu lonjakan harga emas karena tingginya permintaan atas aset yang dianggap stabil dan aman.
+
+2. Teknologi Machine Learning (ML) telah berkembang menjadi alat bantu potensial dalam memprediksi tren harga emas. Dengan kemampuan mempelajari pola dari data historis, ML memberikan pendekatan analitis berbasis data. Namun demikian, prediksi yang dihasilkan masih belum sepenuhnya akurat karena tingginya kompleksitas pasar emas. Oleh karena itu, analisis berbasis ML perlu dikombinasikan dengan strategi manajemen risiko dan diversifikasi investasi untuk mendukung pengambilan keputusan yang lebih tepat.
 
 ### Goals
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+1. Meningkatkan performa model prediksi harga emas melalui penerapan algoritma Machine Learning yang lebih modern, efektif, dan adaptif. Tujuan ini mencakup pengembangan model yang responsif terhadap dinamika pasar yang kompleks dan volatil, dengan pendekatan analitis yang lebih presisi dan berdaya saing.
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+2. Menyediakan wawasan analitis yang bermanfaat bagi investor guna menunjang pengambilan keputusan investasi emas secara strategis dan berbasis data. Prediksi harga emas yang akurat diharapkan mampu mengurangi ketidakpastian dan risiko yang melekat pada instrumen investasi ini. Informasi yang disajikan antara lain:
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
+- Analisis faktor ekonomi makro seperti inflasi, suku bunga, serta ketegangan geopolitik yang dapat mempengaruhi pergerakan harga emas, sehingga investor dapat memahami latar belakang pergerakan harga secara lebih mendalam.
 
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+- Pola historis harga emas yang ditampilkan dalam bentuk visualisasi tren dan analisis teknikal, guna mendukung investor dalam mengidentifikasi momen terbaik untuk melakukan aksi beli atau jual.
+
+- Sentimen pasar terkini, baik yang berasal dari berita ekonomi maupun opini analis, membantu memetakan persepsi pasar terhadap situasi global yang sedang berlangsung.
+
+- Prediksi harga berbasis model ML yang dihasilkan dari data historis dan variabel pendukung lainnya, menjadi alat bantu utama dalam merancang strategi investasi masa depan.
+
+- Konsep diversifikasi aset, yang menjelaskan peran emas dalam struktur portofolio investasi agar risiko keseluruhan dapat diminimalkan.
+
+- Strategi manajemen risiko investasi emas, yang mencakup perlindungan terhadap fluktuasi harga dan instrumen mitigasi risiko seperti derivatif.
+
+- Pilihan instrumen investasi berbasis emas termasuk ETF, kontrak berjangka, atau saham tambang emas, yang disesuaikan dengan profil risiko dan tujuan finansial investor.
+
+- Evaluasi terhadap biaya investasi, seperti biaya penyimpanan fisik emas atau biaya pengelolaan instrumen berbasis emas, agar investor dapat menghitung estimasi keuntungan bersih secara lebih tepat.
+
+
+### Solution statements
+1. Salah satu metode untuk meningkatkan akurasi prediksi harga emas adalah dengan menggunakan teknik ensemble learning yang mengombinasikan berbagai model Machine Learning. Karena setiap algoritma memiliki keunikan dan performa yang berbeda tergantung pada jenis data, pendekatan ini memungkinkan kelebihan masing-masing model untuk saling melengkapi. Contohnya, algoritma Linear Regression dapat dimanfaatkan untuk menangkap pola tren jangka panjang, sedangkan Random Forest Regression dapat digunakan untuk menangani fluktuasi harga jangka pendek yang lebih kompleks dan variatif.
+
+2. Strategi lainnya adalah dengan melakukan penyempurnaan terhadap model awal melalui proses penyesuaian parameter yang dikenal sebagai hyperparameter tuning. Model baseline yang belum dioptimalkan cenderung memberikan hasil prediksi yang kurang akurat. Oleh karena itu, mengatur nilai-nilai hyperparameter—yang merupakan parameter eksternal dari model—secara cermat dapat menghasilkan performa model yang lebih baik. Proses ini melibatkan pencarian kombinasi nilai parameter terbaik melalui pendekatan seperti grid search atau random search, sehingga model dapat menghasilkan estimasi harga emas dengan tingkat presisi yang lebih tinggi.
+
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+Dataset yang digunakan dalam proyek ini adalah dataset [Gold Price Prediction](https://www.kaggle.com/datasets/altruistdelhite04/gold-price-data) yang diambil dari platform Kaggle. *File* yang digunakan berupa *file* csv, yaitu `gld_price_data.csv`.
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+Dataset ini disimpan dalam format Comma Separated Values (CSV) dan terdiri dari 2290 entri dengan total 6 atribut. Lima atribut di antaranya bertipe numerik, sementara satu kolom lainnya merupakan data bertipe tanggal. Data ini mencatat nilai variabel SPX, GLD, USO, SLV, serta EUR/USD yang terorganisasi berdasarkan tanggal.
+
+- DATE
+Menunjukkan tanggal pengambilan data dalam dataset, yang disajikan dalam format bulan/tanggal/tahun (mm/dd/yyyy).
+
+- SPX
+Merupakan indeks S&P 500, yaitu indeks saham yang merepresentasikan performa 500 perusahaan besar yang tercatat di bursa saham Amerika Serikat. SPX dikenal sebagai salah satu indikator utama dalam pasar keuangan global.
+
+- GLD
+Mengacu pada SPDR Gold Shares, sebuah Exchange-Traded Fund (ETF) yang memiliki kepemilikan emas fisik sebagai aset dasarnya. GLD termasuk ETF berbasis emas yang paling populer secara global.
+
+- USO
+Merupakan singkatan dari United States Oil Fund, yaitu ETF yang berfokus pada investasi di kontrak berjangka minyak mentah jenis West Texas Intermediate (WTI). USO menjadi salah satu ETF minyak yang paling banyak diperdagangkan.
+
+- SLV
+Adalah iShares Silver Trust, ETF yang mencerminkan harga perak fisik melalui kepemilikan langsung. SLV merupakan salah satu produk ETF utama yang mewakili komoditas perak.
+
+- EUR/USD
+Merupakan kurs pasangan mata uang euro terhadap dolar Amerika Serikat. Pasangan ini termasuk salah satu yang paling aktif diperdagangkan di pasar valuta asing (forex).
+
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
