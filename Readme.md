@@ -12,9 +12,11 @@
 
 ## Domain Proyek
 
-Emas telah lama dikenal sebagai salah satu instrumen investasi yang diminati secara global. Pergerakan nilainya dipengaruhi oleh sejumlah variabel seperti inflasi, kebijakan suku bunga, dinamika perekonomian dunia, serta tingkat permintaan terhadap komoditas logam mulia ini. Fluktuasi harga emas yang cukup dinamis membuat prediksi terhadap pergerakannya menjadi hal yang kompleks bagi para investor. [[1]](https://money.kompas.com/read/2025/03/22/081200526/faktor-faktor-ini-yang-pengaruhi-pergerakan-harga-emas?utm_source=Various&utm_medium=Referral&utm_campaign=Top_Desktop)
+Emas telah lama dikenal sebagai salah satu instrumen investasi yang diminati secara global. Pergerakan nilainya dipengaruhi oleh sejumlah variabel seperti inflasi, kebijakan suku bunga, dinamika perekonomian dunia, serta tingkat permintaan terhadap komoditas logam mulia ini. Fluktuasi harga emas yang cukup dinamis membuat prediksi terhadap pergerakannya menjadi hal yang kompleks bagi para investor. [[1]](https://money.kompas.com/read/2025/03/22/081200526/faktor-faktor-ini-yang-pengaruhi-pergerakan-harga-emas?utm_source=Various&utm_m
 
-![Image](https://github.com/user-attachments/assets/62c94c8e-8b8e-4f5f-9bc1-a2a7740fcd03)
+![fZ-2qwcv55LciXkKzUnU](https://github.com/user-attachments/assets/c7157372-9507-4901-94a7-aebbd70f2194)
+
+
 **Gambar 1. Ilustrasi Gold (Emas)**
 
 Dalam hal ini, pemanfaatan teknologi Machine Learning (ML) menjadi alternatif yang menjanjikan untuk melakukan prediksi harga emas di masa yang akan datang. Teknologi ini mampu mengidentifikasi pola dari data historis harga emas, sehingga dapat digunakan untuk menghasilkan estimasi pergerakan harga secara lebih akurat berdasarkan pembelajaran dari data terdahulu.
@@ -144,7 +146,8 @@ Berdasarkan output di atas, terdapat 5 kolom dengan tipe data float64, 1 kolom d
 Berdasarkan output diatas memberikan informasi mengenai statistik dataset yaitu count(jumlah data), mean(nilai rata-rata), std(standard deviasi), min(nilai terendah), 25%(quartil 1), 50%(median), 75%(quartil 3) dan max(nilai tertinggi).
 
 Grafik 1: Menampilkan pola korelasi variabel dengan pairplot
-![Image](https://github.com/user-attachments/assets/7eeac763-68cb-4e02-b58e-68c7f5f99867)
+![download](https://github.com/user-attachments/assets/3586e65c-966d-446d-90dd-0db47bfa2a6a)
+
 
 ## Data Preparation
 
