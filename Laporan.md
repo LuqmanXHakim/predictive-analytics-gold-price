@@ -119,6 +119,32 @@ Adalah iShares Silver Trust, ETF yang mencerminkan harga perak fisik melalui kep
 - EUR/USD
 Merupakan kurs pasangan mata uang euro terhadap dolar Amerika Serikat. Pasangan ini termasuk salah satu yang paling aktif diperdagangkan di pasar valuta asing (forex).
 
+**Tabel 1. Deskripsi variabel**
+   | # | Column    | Non-Null Count | Dtype   |
+   |---|-----------|----------------|---------|
+   | 0 | Date      | 2290 non-null  | object  |
+   | 1 | SPX       | 2290 non-null  | float64 |
+   | 2 | GLD       | 2290 non-null  | float64 |
+   | 3 | USO       | 2290 non-null  | float64 |
+   | 4 | SLV       | 2290 non-null  | float64 |
+   | 5 | EUR/USD   | 2290 non-null  | float64 |
+   Berdasarkan output di atas, terdapat 5 kolom dengan tipe data float64, 1 kolom dengan tipe data objek.
+
+**Tabel 2 : Deskripsi Statistik Dataset**      
+| Desc  |   SPX   |   GLD   |   USO   |   SLV   | EUR/USD |
+|-------|---------|---------|---------|---------|---------|
+| count | 2290.00 | 2290.00 | 2290.00 | 2290.00 | 2290.00 |
+|  mean | 1654.32 |  122.73 |   31.84 |   20.85 |    1.28 |
+|  std  |  519.11 |   23.28 |   19.52 |    7.09 |    0.13 |
+|  min  |  676.53 |   70.00 |    7.96 |    8.85 |    1.04 |
+|  25%  | 1239.87 |  109.73 |   14.38 |   15.57 |    1.17 |
+|  50%  | 1551.43 |  120.58 |   33.87 |   17.27 |    1.30 |
+|  75%  | 2073.01 |  132.84 |   37.83 |   22.88 |    1.37 |
+|  max  | 2872.87 |  184.59 |  117.48 |   47.26 |    1.60 | 
+Berdasarkan output diatas  memberikan informasi mengenai statistik dataset yaitu count(jumlah data), mean(nilai rata-rata), std(standard deviasi), min(nilai terendah), 25%(quartil 1), 50%(median), 75%(quartil 3) dan max(nilai tertinggi).
+
+Grafik 1: Menampilkan pola korelasi variabel dengan pairplot
+![Image](https://github.com/user-attachments/assets/7eeac763-68cb-4e02-b58e-68c7f5f99867)
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
