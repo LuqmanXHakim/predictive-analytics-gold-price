@@ -287,3 +287,7 @@ Model Random Forest Regressor memperlihatkan performa yang lebih baik secara kes
 Berdasarkan hasil permodelan dan evaluasi, model terbaik untuk diterapkan pada dataset prediksi emas adalah **Random Forest Regressor**
 
 **---Ini adalah bagian akhir laporan---**
+
+## Referensi
+
+[1] Faktor-faktor Ini yang Pengaruhi Pergerakan Harga Emas (https://money.kompas.com/read/2025/03/22/081200526/faktor-faktor-ini-yang-pengaruhi-pergerakan-harga-emas?utm_source=Various&utm_medium=Referral&utm_campaign=Top_Desktop)
