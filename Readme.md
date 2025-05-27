@@ -156,12 +156,138 @@ Langkah-langkah dalam Menyiapkan Data
 
 2. Meninjau struktur data:
    Pemeriksaan awal data bertujuan untuk mendapatkan pemahaman umum terhadap isi dataset, mengidentifikasi kemungkinan adanya data yang tidak valid, serta mengevaluasi kelengkapan dan tipe data tiap kolom. Kegiatan ini biasanya melibatkan pengecekan dimensi dataset, contoh baris, informasi tipe data, nilai kosong, dan ringkasan statistik.
+   
+      2.1 Transformasi Kolom Date
+      Kolom Date yang semula bertipe objek (string) dikonversi menjadi tipe datetime menggunakan fungsi pd.to_datetime().
+   
+   Setelah dikonversi, dilakukan ekstraksi tiga komponen waktu dari kolom tersebut:
+   
+   - Day: hari dari tanggal
+   
+   - Month: bulan dari tanggal
+   
+   - Year: tahun dari tanggal
+   
+   Langkah ini bertujuan untuk menguraikan informasi waktu yang terkandung dalam satu kolom menjadi beberapa fitur numerik terpisah yang lebih mudah diproses dalam algoritma machine learning.
+   
+   2.2 Penghapusan Kolom Asal dan Seleksi Kolom Penting
+   
+   - Setelah tiga komponen waktu berhasil diekstrak, kolom Date dihapus karena sudah tidak diperlukan.
+   
+   - Dataset kemudian disusun ulang hanya dengan menyertakan kolom-kolom berikut:
+   
+     - Day, Month, Year (hasil ekstraksi waktu)
+   
+     - SPX, GLD, USO, SLV, EUR/USD (fitur numerik terkait harga pasar)
+   
+   2.3 Output Dataset
+      Hasil akhir dari proses ini adalah sebuah DataFrame dengan 8 kolom dan 2.290 baris. Beberapa baris awal dari dataset terlihat sebagai berikut:
+   
+   | Day | Month | Year | SPX         | GLD       | USO       | SLV     | EUR/USD  |
+   | --- | ----- | ---- | ----------- | --------- | --------- | ------- | -------- |
+   | 2   | 1     | 2008 | 1447.160034 | 84.860001 | 78.470001 | 15.1800 | 1.471692 |
+   | 3   | 1     | 2008 | 1447.160034 | 85.570000 | 78.370003 | 15.2850 | 1.474491 |
+   | 4   | 1     | 2008 | 1411.630005 | 85.129997 | 77.309998 | 15.1670 | 1.475492 |
+   | 7   | 1     | 2008 | 1416.180054 | 84.769997 | 75.500000 | 15.0530 | 1.468299 |
+   | 8   | 1     | 2008 | 1390.189941 | 86.779999 | 76.059998 | 15.5900 | 1.557099 |
 
 3. Eksplorasi data lebih lanjut:
    Proses ini berfokus pada analisis visual dan statistik guna menemukan pola tersembunyi atau hubungan antar variabel. Diagram seperti histogram, scatter plot, dan box plot digunakan untuk memahami distribusi dan interaksi antar fitur. Analisis ini membantu dalam merumuskan hipotesis awal atau mengarahkan pemilihan model.
 
+   Pada tahap ini dilakukan analisis deskriptif terhadap harga emas (GLD) untuk melihat tren rata-rata harga tahunan dari tahun 2008 hingga 2018.
+   
+   3.1 Langkah-langkah Analisis
+   Pertama, seluruh tahun unik diambil dari kolom Year menggunakan df['Year'].unique().
+   
+   Kemudian dilakukan iterasi terhadap tahun-tahun tersebut:
+   
+   Untuk setiap tahun, dipilih subset data yang sesuai.
+   
+   Dari subset tersebut dihitung rata-rata harga GLD menggunakan fungsi .mean().
+   
+   Hasil dari perhitungan disimpan dalam bentuk list of dictionary, lalu dikonversi menjadi DataFrame average_prices_per_year.
+   
+   3.2 Output Tabel Rata-rata GLD
+   Berikut adalah hasil rata-rata harga GLD untuk masing-masing tahun:
+
+   | Tahun | Rata-rata GLD |
+   | ----- | ------------- |
+   | 2008  | 86.11         |
+   | 2009  | 95.83         |
+   | 2010  | 119.97        |
+   | 2011  | 152.59        |
+   | 2012  | 162.15        |
+   | 2013  | 136.85        |
+   | 2014  | 121.72        |
+   | 2015  | 111.17        |
+   | 2016  | 118.78        |
+   | 2017  | 119.55        |
+   | 2018  | 126.02        |
+   
+   3.3 Interpretasi
+   Harga emas mengalami tren naik signifikan dari tahun 2008 (86.11) hingga puncaknya pada tahun 2012 (162.15).
+   
+   Setelah itu, terdapat penurunan bertahap hingga tahun 2015.
+   
+   Sejak 2016 hingga 2018, harga kembali menunjukkan kestabilan di kisaran 118–126.
+   
+   Analisis ini memberikan insight awal yang berguna untuk melihat fluktuasi harga emas dalam konteks waktu.
+
 4. Membersihkan dataset:
    Data yang diperoleh sering mengandung ketidaksempurnaan seperti nilai hilang, anomali (outlier), atau kesalahan entri. Oleh karena itu, proses pembersihan dilakukan dengan cara menghapus atau memperbaiki nilai-nilai tersebut, menyaring kolom yang tidak relevan, serta melakukan transformasi data agar lebih konsisten dan siap dianalisis.
+
+   4.1 Pemeriksaan Missing Value
+   Langkah penting dalam proses pra-pemrosesan data adalah memeriksa keberadaan nilai yang hilang (missing values). Nilai yang hilang dapat menyebabkan bias atau kesalahan dalam analisis dan model prediktif, sehingga perlu diidentifikasi sejak awal.
+   Pemeriksaan dilakukan menggunakan fungsi df.isna().sum() yang menghitung jumlah nilai kosong pada setiap kolom.
+
+   Hasil:
+   Seluruh kolom dalam dataset tidak mengandung nilai yang hilang. Hal ini menunjukkan bahwa dataset telah lengkap dan tidak memerlukan proses imputasi atau pembersihan data terkait missing values.
+
+   4.2 Deteksi Outliers
+   Outliers pada kolom GLD dideteksi menggunakan metode Interquartile Range (IQR). Berikut langkah-langkahnya:
+   
+   Menghitung kuartil ke-1 (Q1), kuartil ke-3 (Q3), dan IQR.
+   
+   Menentukan batas bawah dan batas atas:
+   
+   Lower Bound = Q1 - 1.5 * IQR
+   
+   Upper Bound = Q3 + 1.5 * IQR
+   
+   Menyaring data yang memiliki nilai GLD di luar rentang tersebut.
+
+   | Day | Month | Year | SPX         | GLD       | USO       | SLV   | EUR/USD  |
+   | --- | ----- | ---- | ----------- | --------- | --------- | ----- | -------- |
+   | 137 | 9     | 2008 | 1232.040039 | 74.220001 | 82.970001 | 10.60 | 1.399600 |
+   | 138 | 9     | 2008 | 1249.050049 | 73.080002 | 81.489998 | 10.32 | 1.423994 |
+   | 161 | 10    | 2008 | 896.780029  | 71.709999 | 54.930000 | 9.45  | 1.294498 |
+   | ... | ...   | ...  | ...         | ...       | ...       | ...   | ...      |
+   | 191 | 12    | 2008 | 876.070007  | 74.519997 | 34.250000 | 9.40  | 1.271698 |
+   
+   Jumlah total outliers yang terdeteksi: 92 baris data
+
+   4.3 Penanganan Outliers
+   Outliers pada kolom GLD ditangani dengan metode penggantian nilai ekstrem menggunakan nilai median. Langkahnya:
+   
+   - Menghitung nilai median dari kolom GLD.
+   
+   - Melakukan transformasi:
+   
+     - Jika GLD < lower bound atau GLD > upper bound, maka nilai tersebut diganti dengan nilai median.
+   
+   4.5 Output Data Setelah Penanganan Outliers
+   Hasil data setelah penanganan:
+
+   | Day  | Month | Year | SPX         | GLD       | USO       | SLV     | EUR/USD  |
+   | ---- | ----- | ---- | ----------- | --------- | --------- | ------- | -------- |
+   | 0    | 1     | 2008 | 1447.160034 | 84.860001 | 78.470001 | 15.1800 | 1.471692 |
+   | 1    | 1     | 2008 | 1447.160034 | 85.570000 | 78.370003 | 15.2850 | 1.474491 |
+   | 2    | 1     | 2008 | 1411.630005 | 85.129997 | 77.309998 | 15.1670 | 1.475492 |
+   | ...  | ...   | ...  | ...         | ...       | ...       | ...     | ...      |
+   | 2289 | 5     | 2018 | 2725.780029 | 122.5438  | 14.405800 | 15.4542 | 1.182033 |
+   
+   Setelah penggantian outliers, jumlah data tetap 2290 baris, tetapi semua nilai GLD kini berada dalam rentang normal (tidak ada yang melebihi batas IQR).
+
 
 5. Membagi data menjadi subset:
    Untuk membangun model machine learning yang dapat diandalkan, data perlu dipisahkan menjadi dua bagian: satu untuk pelatihan (training set) dan lainnya untuk pengujian (testing set). Rasio umum yang digunakan adalah 70:30 atau 80:20. Tujuannya adalah untuk memastikan bahwa model diuji pada data yang belum pernah dilihat sebelumnya, sehingga performanya dapat dievaluasi secara objektif.
@@ -169,41 +295,23 @@ Langkah-langkah dalam Menyiapkan Data
 6. Menyelaraskan skala data (normalisasi):
    Ketika fitur dalam dataset memiliki skala nilai yang sangat bervariasi, hal ini dapat memengaruhi performa beberapa algoritma. Normalisasi atau standarisasi digunakan untuk menyetarakan skala seluruh variabel agar algoritma seperti regresi linier atau k-means dapat bekerja lebih optimal. Teknik populer termasuk Min-Max Scaling, StandardScaler, dan Z-Score, serta pendekatan lanjutan seperti PCA bila diperlukan.
 
-Pada tahap ini dilakukan sejumlah teknik praprosesan data untuk memastikan data bersih, terstruktur, dan siap digunakan dalam proses pemodelan. Berikut adalah tahapan-tahapan yang diterapkan secara berurutan:
+   6.1 Menyelaraskan Skala Data (Normalisasi)
+   Ketika fitur dalam dataset memiliki skala nilai yang sangat bervariasi, hal ini dapat memengaruhi performa beberapa algoritma pembelajaran mesin. Misalnya, algoritma seperti regresi linier, K-Nearest Neighbors (KNN), Support Vector Machine (SVM), dan K-Means Clustering sangat sensitif terhadap perbedaan skala antar fitur.
+   
+   Untuk itu, digunakan proses normalisasi atau standarisasi agar seluruh fitur memiliki kontribusi yang setara dalam proses pembelajaran. Teknik yang umum digunakan untuk tujuan ini antara lain:
+   
+   - Min-Max Scaling
+   
+   - StandardScaler (Z-score normalization)
+   
+   - RobustScaler
+   
+   - Principal Component Analysis (PCA) untuk reduksi dimensi berbasis varians fitur.
 
-1. Transformasi Kolom Date
-   Kolom Date yang semula bertipe objek (string) dikonversi menjadi tipe datetime menggunakan fungsi pd.to_datetime().
+   6.2 Cara Penskalaan Fitur Menggunakan MinMaxScaler
+MinMaxScaler dari pustaka sklearn.preprocessing adalah teknik normalisasi yang mengubah fitur ke dalam rentang skala [0, 1]. Penskalaan ini dilakukan dengan rumus:
+   "x' = (x - x_min) / (x_max - x_min)"
 
-Setelah dikonversi, dilakukan ekstraksi tiga komponen waktu dari kolom tersebut:
-
-- Day: hari dari tanggal
-
-- Month: bulan dari tanggal
-
-- Year: tahun dari tanggal
-
-Langkah ini bertujuan untuk menguraikan informasi waktu yang terkandung dalam satu kolom menjadi beberapa fitur numerik terpisah yang lebih mudah diproses dalam algoritma machine learning.
-
-2. Penghapusan Kolom Asal dan Seleksi Kolom Penting
-
-- Setelah tiga komponen waktu berhasil diekstrak, kolom Date dihapus karena sudah tidak diperlukan.
-
-- Dataset kemudian disusun ulang hanya dengan menyertakan kolom-kolom berikut:
-
-  - Day, Month, Year (hasil ekstraksi waktu)
-
-  - SPX, GLD, USO, SLV, EUR/USD (fitur numerik terkait harga pasar)
-
-3. Output Dataset
-   Hasil akhir dari proses ini adalah sebuah DataFrame dengan 8 kolom dan 2.290 baris. Beberapa baris awal dari dataset terlihat sebagai berikut:
-
-| Day | Month | Year | SPX         | GLD       | USO       | SLV     | EUR/USD  |
-| --- | ----- | ---- | ----------- | --------- | --------- | ------- | -------- |
-| 2   | 1     | 2008 | 1447.160034 | 84.860001 | 78.470001 | 15.1800 | 1.471692 |
-| 3   | 1     | 2008 | 1447.160034 | 85.570000 | 78.370003 | 15.2850 | 1.474491 |
-| 4   | 1     | 2008 | 1411.630005 | 85.129997 | 77.309998 | 15.1670 | 1.475492 |
-| 7   | 1     | 2008 | 1416.180054 | 84.769997 | 75.500000 | 15.0530 | 1.468299 |
-| 8   | 1     | 2008 | 1390.189941 | 86.779999 | 76.059998 | 15.5900 | 1.557099 |
 
 ## Modeling
 
