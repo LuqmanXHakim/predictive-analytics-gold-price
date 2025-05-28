@@ -333,67 +333,96 @@ MinMaxScaler dari pustaka sklearn.preprocessing adalah teknik normalisasi yang m
 
 ## Modeling
 
+Pada tahap modeling, dilakukan pemilihan algoritma yang akan digunakan dalam membuat model machine learning, serta pengembangan dan pelatihan model machine learning agar dapat digunakan untuk melakukan analisis prediksi.
+
 1. Linier Regression
-   Konsep Dasar:
-   Regresi linier adalah metode statistik yang digunakan untuk memodelkan hubungan antara satu atau lebih variabel independen dengan variabel dependen melalui garis lurus. Model ini berusaha mengestimasi koefisien yang menghubungkan fitur dengan target sehingga dapat memprediksi nilai target berdasarkan data masukan.
+Konsep Dasar:
+Regresi linier adalah metode statistik yang digunakan untuk memodelkan hubungan antara satu atau lebih variabel independen dengan variabel dependen melalui garis lurus. Model ini berusaha mengestimasi koefisien yang menghubungkan fitur dengan target sehingga dapat memprediksi nilai target berdasarkan data masukan.
 
 Kelebihan:
 
-Mudah Dipahami dan Dijelaskan: Pendekatan ini menghasilkan model yang transparan berupa persamaan linear, sehingga pengguna bisa memahami kontribusi masing-masing fitur.
+- Mudah Dipahami dan Dijelaskan: Pendekatan ini menghasilkan model yang transparan berupa persamaan linear, sehingga pengguna bisa memahami kontribusi masing-masing fitur.
 
-Efisien untuk Hubungan Linier: Sangat efektif bila data memiliki pola hubungan linier, memberikan hasil prediksi yang solid dalam konteks tersebut.
+- Efisien untuk Hubungan Linier: Sangat efektif bila data memiliki pola hubungan linier, memberikan hasil prediksi yang solid dalam konteks tersebut.
 
-Cepat dalam Komputasi: Model ini ringan untuk dilatih dan sangat cepat dalam proses prediksi.
+- Cepat dalam Komputasi: Model ini ringan untuk dilatih dan sangat cepat dalam proses prediksi.
 
 Kekurangan:
 
-Rentan terhadap Nilai Ekstrem: Model dapat terdistorsi oleh keberadaan outlier karena sifatnya yang sensitif terhadap perubahan ekstrem pada data.
+- Rentan terhadap Nilai Ekstrem: Model dapat terdistorsi oleh keberadaan outlier karena sifatnya yang sensitif terhadap perubahan ekstrem pada data.
 
-Tidak Cocok untuk Pola Kompleks: Jika hubungan antar variabel bersifat non-linier, model ini akan menghasilkan prediksi yang kurang akurat.
+- Tidak Cocok untuk Pola Kompleks: Jika hubungan antar variabel bersifat non-linier, model ini akan menghasilkan prediksi yang kurang akurat.
 
 Parameter Umum:
 
-copy_X: Menentukan apakah data fitur disalin saat pelatihan berlangsung. Default: True.
+- copy_X: Menentukan apakah data fitur disalin saat pelatihan berlangsung. Default: True.
 
-fit_intercept: Apakah model harus menghitung nilai bias (intercept). Default: True.
+- fit_intercept: Apakah model harus menghitung nilai bias (intercept). Default: True.
 
-n_jobs: Jumlah core CPU yang digunakan untuk komputasi paralel. Default: None.
+- n_jobs: Jumlah core CPU yang digunakan untuk komputasi paralel. Default: None.
 
-positive: Menentukan apakah koefisien regresi hanya boleh bernilai positif. Default: False.
+- positive: Menentukan apakah koefisien regresi hanya boleh bernilai positif. Default: False.
 
-coefficients: Koefisien regresi yang menunjukkan kontribusi masing-masing fitur terhadap prediksi.
+- coefficients: Koefisien regresi yang menunjukkan kontribusi masing-masing fitur terhadap prediksi.
+
+Hasil Evaluasi Model:
+Berdasarkan proses tuning dengan GridSearchCV, parameter terbaik yang diperoleh untuk model Linear Regression adalah:
+
+```
+{'copy_X': True, 'fit_intercept': True, 'n_jobs': None, 'positive': True}
+```
+
+Model ini menghasilkan nilai Mean Squared Error (MSE) terbaik sebesar 312.77, menunjukkan performa yang cukup baik dalam konteks regresi pada dataset ini.
 
 2. Random Forest Regressor
-   Konsep Dasar:
-   Random Forest merupakan algoritma berbasis ensemble learning yang menggunakan banyak pohon keputusan (decision tree) untuk menghasilkan prediksi regresi. Hasil akhir prediksi adalah rata-rata dari semua pohon yang dibentuk selama proses pelatihan, sehingga meningkatkan stabilitas dan akurasi model.
+Konsep Dasar:
+Random Forest adalah algoritma ensemble learning yang menggunakan banyak decision tree untuk menghasilkan prediksi regresi. Setiap pohon dibangun dari subset data yang dipilih secara acak, dan hasil akhir prediksi merupakan rata-rata dari seluruh pohon. Pendekatan ini meningkatkan stabilitas dan akurasi model serta mengurangi risiko overfitting.
 
 Kelebihan:
 
-Akurat dan Tahan Terhadap Overfitting: Dengan menggabungkan hasil dari banyak pohon, Random Forest mampu mengurangi varians dan meminimalkan overfitting yang umum terjadi pada pohon tunggal.
+- Akurat dan Tahan Terhadap Overfitting: Dengan menggabungkan banyak pohon, Random Forest mengurangi varians dan memberikan hasil yang lebih stabil dibanding satu decision tree.
 
-Dapat Menangani Hubungan Non-linear: Mampu mengatasi pola yang kompleks antara fitur dan target tanpa perlu transformasi fitur secara manual.
+- Menangani Hubungan Non-Linear: Model ini mampu mempelajari pola kompleks tanpa perlu transformasi fitur secara eksplisit.
 
-Tahan Terhadap Outlier dan Nilai Hilang: Model ini tetap dapat bekerja dengan baik walaupun data mengandung anomali atau nilai yang tidak lengkap.
+- Tahan terhadap Outlier dan Missing Value: Kinerja model tetap kuat walaupun terdapat data anomali atau nilai yang hilang.
 
 Kekurangan:
 
-Kurang Interpretatif: Berbeda dengan regresi linier, sulit untuk memahami secara langsung bagaimana setiap fitur memengaruhi hasil karena model terdiri dari banyak pohon.
+- Kurang Interpretatif: Sulit untuk memahami kontribusi spesifik tiap fitur terhadap hasil prediksi karena kompleksitas model yang tinggi.
 
-Butuh Sumber Daya Lebih Banyak: Proses pelatihan dan prediksi bisa memakan waktu lebih lama dan membutuhkan memori lebih besar, terutama jika jumlah pohon sangat banyak.
+- Konsumsi Sumber Daya Tinggi: Memerlukan lebih banyak waktu pelatihan dan memori, terutama saat menggunakan banyak pohon.
 
-Tuning Parameter yang Kompleks: Parameter seperti jumlah pohon (n_estimators) atau kedalaman maksimal (max_depth) harus disesuaikan agar mendapatkan kinerja optimal.
+- Parameter Tuning yang Kompleks: Banyaknya parameter yang dapat disesuaikan memerlukan pencarian hyperparameter yang hati-hati agar hasil optimal.
 
 Parameter Umum:
 
-n_estimators: Jumlah pohon dalam hutan.
+- n_estimators: Jumlah pohon dalam hutan.
 
-max_depth: Kedalaman maksimum masing-masing pohon.
+- max_depth: Kedalaman maksimum masing-masing pohon.
 
-min_samples_split: Jumlah minimum sampel yang dibutuhkan untuk membagi simpul internal.
+- min_samples_split: Jumlah minimum sampel untuk membagi node internal.
 
-random_state: Untuk memastikan hasil yang reprodusibel.
+- min_samples_leaf: Jumlah minimum sampel di setiap daun.
 
-n_jobs: Menentukan jumlah CPU core yang digunakan secara paralel.
+- bootstrap: Apakah sampel digunakan dengan pengambilan ulang saat pelatihan.
+
+- random_state: Untuk memastikan hasil yang konsisten dan dapat direproduksi.
+
+- n_jobs: Jumlah core CPU yang digunakan untuk komputasi paralel.
+
+Hasil Evaluasi Model:
+Setelah dilakukan tuning hyperparameter menggunakan GridSearchCV, diperoleh parameter terbaik sebagai berikut:
+
+```
+{
+  'bootstrap': True,
+  'max_depth': None,
+  'min_samples_leaf': 1,
+  'min_samples_split': 2,
+  'n_estimators': 50
+}
+```
+Dengan konfigurasi tersebut, model Random Forest Regressor menghasilkan skor Mean Squared Error (MSE) terbaik sebesar 178.96, yang menunjukkan performa prediksi yang lebih baik dibandingkan model Linear Regression pada dataset yang sama.
 
 ## Evaluation
 
@@ -448,6 +477,27 @@ Model Random Forest Regressor memperlihatkan performa yang lebih baik secara kes
    Menjelaskan seberapa baik variasi data target dijelaskan oleh model. Semakin tinggi nilai R², semakin besar proporsi variasi yang dapat dijelaskan.
 
 Berdasarkan hasil permodelan dan evaluasi, model terbaik untuk diterapkan pada dataset prediksi emas adalah **Random Forest Regressor**
+
+### Keterkaitan dengan Business Understanding
+
+**Apakah model menjawab problem statement?**
+
+Ya. Permasalahan utama adalah bagaimana memprediksi harga emas secara akurat untuk mendukung pengambilan keputusan keuangan. Random Forest Regressor berhasil mengatasi ini dengan menghasilkan nilai MAE dan MSE yang rendah serta nilai R² yang tinggi, yang berarti model mampu memberikan estimasi harga emas yang dekat dengan nilai sebenarnya.
+
+**Apakah model berhasil mencapai goals?**
+Ya. Tujuan utama adalah menyediakan sistem prediksi harga emas yang andal sebagai dasar untuk perencanaan investasi, pengelolaan risiko, dan pengambilan keputusan bisnis. Model Random Forest mencapai tujuan ini dengan performa yang memadai, bahkan pada data uji yang belum pernah dilihat sebelumnya (R² Test = 0.918).
+
+**Apakah solusi yang dirancang berdampak?**
+Iya. Implementasi model prediktif berbasis Random Forest memiliki dampak langsung terhadap kebutuhan bisnis, yaitu:
+
+- Meningkatkan kepercayaan dalam mengambil keputusan beli/jual emas.
+
+- Mengurangi risiko kerugian akibat prediksi manual yang tidak akurat.
+
+- Memberikan wawasan data-driven yang konkret untuk strategi investasi.
+
+**Kesimpulan**
+Berdasarkan evaluasi performa dan relevansi terhadap kebutuhan bisnis, Random Forest Regressor merupakan model terbaik yang direkomendasikan untuk diterapkan dalam sistem prediksi harga emas. Model ini tidak hanya unggul secara statistik, tetapi juga selaras dengan strategi bisnis dan dapat memberikan nilai tambah nyata dalam konteks pengambilan keputusan finansial berbasis data.
 
 ## Referensi
 
