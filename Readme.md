@@ -309,8 +309,26 @@ Langkah-langkah dalam Menyiapkan Data
    - Principal Component Analysis (PCA) untuk reduksi dimensi berbasis varians fitur.
 
    6.2 Cara Penskalaan Fitur Menggunakan MinMaxScaler
-MinMaxScaler dari pustaka sklearn.preprocessing adalah teknik normalisasi yang mengubah fitur ke dalam rentang skala [0, 1]. Penskalaan ini dilakukan dengan rumus:
-   "x' = (x - x_min) / (x_max - x_min)"
+MinMaxScaler dari pustaka sklearn.preprocessing adalah teknik normalisasi yang mengubah fitur ke dalam rentang skala [0, 1].
+   Penskalaan ini dilakukan dengan rumus:
+   
+   $$x' = (x - x_min) / (x_max - x_min)$$
+   
+   Buat Objek Scaler:
+   ```python
+   scaler = MinMaxScaler()
+   ```
+   Fit dan Transform Data Latih:
+
+   ```
+   X_train_scaled = scaler.fit_transform(X_train)
+   ```
+   Transform Data Uji (menggunakan parameter dari data latih):
+   
+   ```
+   X_test_scaled = scaler.transform(X_test)
+   ```
+   Dengan pendekatan ini, semua fitur akan memiliki nilai dalam kisaran 0 hingga 1, membuat model lebih stabil secara numerik dan adil dalam memberikan bobot terhadap fitur-fitur yang ada.
 
 
 ## Modeling
