@@ -238,12 +238,20 @@ Langkah-langkah dalam Menyiapkan Data
 
    4.1 Pemeriksaan Missing Value
    Langkah penting dalam proses pra-pemrosesan data adalah memeriksa keberadaan nilai yang hilang (missing values). Nilai yang hilang dapat menyebabkan bias atau kesalahan dalam analisis dan model prediktif, sehingga perlu diidentifikasi sejak awal.
-   Pemeriksaan dilakukan menggunakan fungsi df.isna().sum() yang menghitung jumlah nilai kosong pada setiap kolom.
+   Pemeriksaan dilakukan menggunakan fungsi ```df.isna().sum()``` yang menghitung jumlah nilai kosong pada setiap kolom.
 
    Hasil:
    Seluruh kolom dalam dataset tidak mengandung nilai yang hilang. Hal ini menunjukkan bahwa dataset telah lengkap dan tidak memerlukan proses imputasi atau pembersihan data terkait missing values.
 
-   4.2 Deteksi Outliers
+   4.2 Pemeriksaan Duplikasi Data
+   Duplikasi data dapat menyebabkan bias pada model prediktif atau analisis statistik karena pengulangan informasi yang sama. Oleh karena itu, langkah ini bertujuan untuk memeriksa apakah terdapat baris yang identik dalam dataset.
+   
+   Pemeriksaan dilakukan menggunakan fungsi ```df.duplicated().sum()```.
+   
+   Hasil:
+   Tidak ditemukan data duplikat dalam dataset (jumlah duplikasi = 0). Ini menunjukkan bahwa seluruh baris data adalah unik dan tidak memerlukan penghapusan data ganda.
+
+   4.3 Deteksi Outliers
    Outliers pada kolom GLD dideteksi menggunakan metode Interquartile Range (IQR). Berikut langkah-langkahnya:
    
    Menghitung kuartil ke-1 (Q1), kuartil ke-3 (Q3), dan IQR.
@@ -266,7 +274,7 @@ Langkah-langkah dalam Menyiapkan Data
    
    Jumlah total outliers yang terdeteksi: 92 baris data
 
-   4.3 Penanganan Outliers
+   4.4 Penanganan Outliers
    Outliers pada kolom GLD ditangani dengan metode penggantian nilai ekstrem menggunakan nilai median. Langkahnya:
    
    - Menghitung nilai median dari kolom GLD.
@@ -289,10 +297,10 @@ Langkah-langkah dalam Menyiapkan Data
    Setelah penggantian outliers, jumlah data tetap 2290 baris, tetapi semua nilai GLD kini berada dalam rentang normal (tidak ada yang melebihi batas IQR).
 
 
-5. Membagi data menjadi subset:
+6. Membagi data menjadi subset:
    Untuk membangun model machine learning yang dapat diandalkan, data perlu dipisahkan menjadi dua bagian: satu untuk pelatihan (training set) dan lainnya untuk pengujian (testing set). Rasio umum yang digunakan adalah 70:30 atau 80:20. Tujuannya adalah untuk memastikan bahwa model diuji pada data yang belum pernah dilihat sebelumnya, sehingga performanya dapat dievaluasi secara objektif.
 
-6. Menyelaraskan skala data (normalisasi):
+7. Menyelaraskan skala data (normalisasi):
    Ketika fitur dalam dataset memiliki skala nilai yang sangat bervariasi, hal ini dapat memengaruhi performa beberapa algoritma. Normalisasi atau standarisasi digunakan untuk menyetarakan skala seluruh variabel agar algoritma seperti regresi linier atau k-means dapat bekerja lebih optimal. Teknik populer termasuk Min-Max Scaling, StandardScaler, dan Z-Score, serta pendekatan lanjutan seperti PCA bila diperlukan.
 
    6.1 Menyelaraskan Skala Data (Normalisasi)
@@ -353,7 +361,7 @@ Kekurangan:
 
 - Tidak Cocok untuk Pola Kompleks: Jika hubungan antar variabel bersifat non-linier, model ini akan menghasilkan prediksi yang kurang akurat.
 
-Parameter Umum:
+Parameter yang:
 
 - copy_X: Menentukan apakah data fitur disalin saat pelatihan berlangsung. Default: True.
 
@@ -394,7 +402,7 @@ Kekurangan:
 
 - Parameter Tuning yang Kompleks: Banyaknya parameter yang dapat disesuaikan memerlukan pencarian hyperparameter yang hati-hati agar hasil optimal.
 
-Parameter Umum:
+Parameter yang digunakan:
 
 - n_estimators: Jumlah pohon dalam hutan.
 
@@ -456,7 +464,7 @@ Ringkasan Perbandingan
 
 ### Memilih model yang terbaik berdasarkan metrik evaluasi
 
-Tabel 4 : Skor MAE, MSE dan R2 dengan parameter cv=5  
+Tabel 4. Skor MAE, MSE dan R2 dengan parameter cv=5  
 | | MAE _Train_| MAE _Test_|MSE _Train_|MSE _Test_|R2 _Train_|R2 _Test_|
 |-------------------|------------|-----------|-----------|----------|----------|---------|
 | Linear Regression | 8.343 | 8.018 | 132.806 | 126.818 | 0.683 | 0.691 |
@@ -476,7 +484,14 @@ Model Random Forest Regressor memperlihatkan performa yang lebih baik secara kes
 3. **R-squared (R2)**:  
    Menjelaskan seberapa baik variasi data target dijelaskan oleh model. Semakin tinggi nilai R², semakin besar proporsi variasi yang dapat dijelaskan.
 
-Berdasarkan hasil permodelan dan evaluasi, model terbaik untuk diterapkan pada dataset prediksi emas adalah **Random Forest Regressor**
+Berdasarkan hasil permodelan dan evaluasi, model terbaik untuk diterapkan pada dataset prediksi emas adalah **Random Forest Regressor** seperti pada tabel 5 dibawah ini.
+
+Tabel 5. Hasil pengujian prediksi model
+|        | y_true        | Linear Regression | Random Forest Regressor |
+|--------|---------------|-------------------|-------------------------|
+| 903    | 120.580002    | 148.668           | 130.717                 |
+
+Berdasarkan output tabel di atas dapat dilihat bahwa urutan algoritma yang paling mendekati dengan nilai y_true adalah Random Forest. Nilai y_true sebesar 120.580002 dan nilai prediksi Random Forest sebesar 130.717.
 
 ### Keterkaitan dengan Business Understanding
 
