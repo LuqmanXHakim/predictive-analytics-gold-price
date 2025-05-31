@@ -423,11 +423,7 @@ Setelah dilakukan tuning hyperparameter menggunakan GridSearchCV, diperoleh para
 
 ```
 {
-  'bootstrap': True,
-  'max_depth': None,
-  'min_samples_leaf': 1,
-  'min_samples_split': 2,
-  'n_estimators': 50
+  'bootstrap': True, 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 50
 }
 ```
 Dengan konfigurasi tersebut, model Random Forest Regressor menghasilkan skor Mean Squared Error (MSE) terbaik sebesar 178.96, yang menunjukkan performa prediksi yang lebih baik dibandingkan model Linear Regression pada dataset yang sama.
@@ -489,7 +485,7 @@ Berdasarkan hasil permodelan dan evaluasi, model terbaik untuk diterapkan pada d
 Tabel 5. Hasil pengujian prediksi model
 |        | y_true        | Linear Regression | Random Forest Regressor |
 |--------|---------------|-------------------|-------------------------|
-| 903    | 120.580002    | 148.668           | 130.717                 |
+| 903    | 120.580002    | 148.668           | 130.034                 |
 
 Berdasarkan output tabel di atas dapat dilihat bahwa urutan algoritma yang paling mendekati dengan nilai y_true adalah Random Forest. Nilai y_true sebesar 120.580002 dan nilai prediksi Random Forest sebesar 130.717.
 
