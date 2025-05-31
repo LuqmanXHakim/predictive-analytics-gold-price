@@ -464,7 +464,7 @@ Tabel 4. Skor MAE, MSE dan R2 dengan parameter cv=5
 | | MAE _Train_| MAE _Test_|MSE _Train_|MSE _Test_|R2 _Train_|R2 _Test_|
 |-------------------|------------|-----------|-----------|----------|----------|---------|
 | Linear Regression | 8.343 | 8.018 | 132.806 | 126.818 | 0.683 | 0.691 |
-| Random Forest Regressor | 0.831 | 2.197 | 4.363 | 33.551 | 0.990 | 0.918 |
+| Random Forest Regressor | 0.815 | 2.181 | 4.389	 | 33.955 | 0.990 | 0.917 |
 
 Berdasarkan output diatas menunjukkan perbandingan performa dua model regresi berdasarkan tiga metrik utama: MAE, MSE, dan R2.
 Model Random Forest Regressor memperlihatkan performa yang lebih baik secara keseluruhan, terutama pada nilai MAE dan MSE yang jauh lebih kecil dibandingkan dengan Linear Regression, serta nilai R2 yang jauh lebih mendekati 1.
