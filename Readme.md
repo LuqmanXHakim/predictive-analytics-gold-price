@@ -426,7 +426,7 @@ Setelah dilakukan tuning hyperparameter menggunakan GridSearchCV, diperoleh para
   'bootstrap': True, 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 50
 }
 ```
-Dengan konfigurasi tersebut, model Random Forest Regressor menghasilkan skor Mean Squared Error (MSE) terbaik sebesar 182.13632316542115, yang menunjukkan performa prediksi yang lebih baik dibandingkan model Linear Regression pada dataset yang sama.
+Dengan konfigurasi tersebut, model Random Forest Regressor menghasilkan skor Mean Squared Error (MSE) terbaik sebesar 182.13, yang menunjukkan performa prediksi yang lebih baik dibandingkan model Linear Regression pada dataset yang sama.
 
 ## Evaluation
 
