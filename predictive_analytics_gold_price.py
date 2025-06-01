@@ -220,23 +220,26 @@ print("Skor Mean Squared Error (MSE) terbaik untuk model Random Forest Regressio
 
 """# Evaluasi"""
 
-metrics = pd.DataFrame(index=['Linear Regression', 'Random Forest Regressor'])
+metrics = pd.DataFrame(index=['Linear Regression','Random Forest Regressor'])
 
-models = {
-    'Linear Regression': lin_reg,
-    'Random Forest Regressor': rf
-}
+models = {'Linear Regression': lin_reg, 'Random Forest Regressor': rf}
 
 for name, model in models.items():
-    y_train_pred = model.predict(X_train)
-    y_test_pred = model.predict(X_test)
+    mae_train = mean_absolute_error(y_true=y_train, y_pred=model.predict(X_train))
+    mae_test = mean_absolute_error(y_true=y_test, y_pred=model.predict(X_test))
 
-    metrics.loc[name, 'MAE Train'] = round(mean_absolute_error(y_train, y_train_pred), 3)
-    metrics.loc[name, 'MAE Test'] = round(mean_absolute_error(y_test, y_test_pred), 3)
-    metrics.loc[name, 'MSE Train'] = round(mean_squared_error(y_train, y_train_pred), 3)
-    metrics.loc[name, 'MSE Test'] = round(mean_squared_error(y_test, y_test_pred), 3)
-    metrics.loc[name, 'R2 Train'] = round(r2_score(y_train, y_train_pred), 3)
-    metrics.loc[name, 'R2 Test'] = round(r2_score(y_test, y_test_pred), 3)
+    mse_train = mean_squared_error(y_true=y_train, y_pred=model.predict(X_train))
+    mse_test = mean_squared_error(y_true=y_test, y_pred=model.predict(X_test))
+
+    r2_train = r2_score(y_true=y_train, y_pred=model.predict(X_train))
+    r2_test = r2_score(y_true=y_test, y_pred=model.predict(X_test))
+
+    metrics.loc[name, 'MAE Train'] = round(mae_train, 3)
+    metrics.loc[name, 'MAE Test'] = round(mae_test, 3)
+    metrics.loc[name, 'MSE Train'] = round(mse_train, 3)
+    metrics.loc[name, 'MSE Test'] = round(mse_test, 3)
+    metrics.loc[name, 'R2 Train'] = round(r2_train, 3)
+    metrics.loc[name, 'R2 Test'] = round(r2_test, 3)
 
 display(metrics)
 

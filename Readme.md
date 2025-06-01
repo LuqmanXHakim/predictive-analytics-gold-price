@@ -426,7 +426,7 @@ Setelah dilakukan tuning hyperparameter menggunakan GridSearchCV, diperoleh para
   'bootstrap': True, 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 50
 }
 ```
-Dengan konfigurasi tersebut, model Random Forest Regressor menghasilkan skor Mean Squared Error (MSE) terbaik sebesar 178.96, yang menunjukkan performa prediksi yang lebih baik dibandingkan model Linear Regression pada dataset yang sama.
+Dengan konfigurasi tersebut, model Random Forest Regressor menghasilkan skor Mean Squared Error (MSE) terbaik sebesar 182.13632316542115, yang menunjukkan performa prediksi yang lebih baik dibandingkan model Linear Regression pada dataset yang sama.
 
 ## Evaluation
 
@@ -464,7 +464,7 @@ Tabel 4. Skor MAE, MSE dan R2 dengan parameter cv=5
 | | MAE _Train_| MAE _Test_|MSE _Train_|MSE _Test_|R2 _Train_|R2 _Test_|
 |-------------------|------------|-----------|-----------|----------|----------|---------|
 | Linear Regression | 8.343 | 8.018 | 132.806 | 126.818 | 0.683 | 0.691 |
-| Random Forest Regressor | 0.815 | 2.181 | 4.389	 | 33.955 | 0.990 | 0.917 |
+| Random Forest Regressor | 0.817 | 2.221 | 4.348	 | 34.063 | 0.990 | 0.917 |
 
 Berdasarkan output diatas menunjukkan perbandingan performa dua model regresi berdasarkan tiga metrik utama: MAE, MSE, dan R2.
 Model Random Forest Regressor memperlihatkan performa yang lebih baik secara keseluruhan, terutama pada nilai MAE dan MSE yang jauh lebih kecil dibandingkan dengan Linear Regression, serta nilai R2 yang jauh lebih mendekati 1.
@@ -485,9 +485,9 @@ Berdasarkan hasil permodelan dan evaluasi, model terbaik untuk diterapkan pada d
 Tabel 5. Hasil pengujian prediksi model
 |        | y_true        | Linear Regression | Random Forest Regressor |
 |--------|---------------|-------------------|-------------------------|
-| 903    | 120.580002    | 148.668           | 130.034                 |
+| 903    | 120.580002    | 148.668           | 131.815                 |
 
-Berdasarkan output tabel di atas dapat dilihat bahwa urutan algoritma yang paling mendekati dengan nilai y_true adalah Random Forest. Nilai y_true sebesar 120.580002 dan nilai prediksi Random Forest sebesar 130.717.
+Berdasarkan output tabel di atas dapat dilihat bahwa urutan algoritma yang paling mendekati dengan nilai y_true adalah Random Forest. Nilai y_true sebesar 120.580002 dan nilai prediksi Random Forest sebesar 131.815.
 
 ### Keterkaitan dengan Business Understanding
 
@@ -496,7 +496,7 @@ Berdasarkan output tabel di atas dapat dilihat bahwa urutan algoritma yang palin
 Ya. Permasalahan utama adalah bagaimana memprediksi harga emas secara akurat untuk mendukung pengambilan keputusan keuangan. Random Forest Regressor berhasil mengatasi ini dengan menghasilkan nilai MAE dan MSE yang rendah serta nilai R² yang tinggi, yang berarti model mampu memberikan estimasi harga emas yang dekat dengan nilai sebenarnya.
 
 **Apakah model berhasil mencapai goals?**
-Ya. Tujuan utama adalah menyediakan sistem prediksi harga emas yang andal sebagai dasar untuk perencanaan investasi, pengelolaan risiko, dan pengambilan keputusan bisnis. Model Random Forest mencapai tujuan ini dengan performa yang memadai, bahkan pada data uji yang belum pernah dilihat sebelumnya (R² Test = 0.918).
+Ya. Tujuan utama adalah menyediakan sistem prediksi harga emas yang andal sebagai dasar untuk perencanaan investasi, pengelolaan risiko, dan pengambilan keputusan bisnis. Model Random Forest mencapai tujuan ini dengan performa yang memadai, bahkan pada data uji yang belum pernah dilihat sebelumnya (R² Test = 0.917).
 
 **Apakah solusi yang dirancang berdampak?**
 Iya. Implementasi model prediktif berbasis Random Forest memiliki dampak langsung terhadap kebutuhan bisnis, yaitu:
